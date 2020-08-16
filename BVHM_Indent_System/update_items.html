@@ -1,0 +1,130 @@
+<html>
+	<head>
+
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
+	
+
+	</head>
+
+	
+	<body>
+		<input class="search_input" type="text" name="" placeholder="Search..." onkeyup="showHint(this.value)">
+	
+	
+		<div id="get_data">
+		
+		...
+		</div>
+	</body>
+	
+	
+	<script>
+	
+	function showHint(str) 
+	{
+		//alert("hello");
+		if(str=='')
+		{
+			fun(document.getElementById("myselect").value);
+		
+		}
+		if (str.length == 0) 
+		{ 
+			document.getElementById("txtHint").innerHTML = "";
+			return;
+		}
+		else 
+		{
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() 
+			{
+				if (this.readyState == 4 && this.status == 200) 
+				{
+					document.getElementById("get_data").innerHTML = this.responseText;
+				}
+			};
+			xmlhttp.open("GET", "items.php?q="+str,true);
+			xmlhttp.send();    
+		}
+	}
+	
+	function update_pname(val,id)
+	{
+		var xhttp = new XMLHttpRequest();
+               // document.getElementById(id_to_update)
+                
+               // alert("hi");
+                xhttp.onreadystatechange = function() 
+                {
+                    if (this.readyState == 4 && this.status == 200) 
+                    {
+                        //document.getElementById("temp").innerHTML = this.responseText;
+                        
+                        //alert(this.responseText);
+                    }
+                    
+                };
+                xhttp.open("GET", "update(pname).php?new_value="+val+"&id="+id,true);
+                xhttp.send();
+		
+	
+	}
+	
+	
+	
+	function update_category(val,id)
+	{
+		var xhttp = new XMLHttpRequest();
+               // document.getElementById(id_to_update)
+                
+               // alert("hi");
+                xhttp.onreadystatechange = function() 
+                {
+                    if (this.readyState == 4 && this.status == 200) 
+                    {
+                        //document.getElementById("temp").innerHTML = this.responseText;
+                        
+                        //alert(this.responseText);
+                    }
+                    
+                };
+                xhttp.open("GET", "update(category).php?new_value="+val+"&id="+id,true);
+                xhttp.send();
+		
+	
+	}
+	
+	
+	function update_price(val,id)
+	{
+		var xhttp = new XMLHttpRequest();
+               // document.getElementById(id_to_update)
+                
+               // alert("hi");
+                xhttp.onreadystatechange = function() 
+                {
+                    if (this.readyState == 4 && this.status == 200) 
+                    {
+                        //document.getElementById("temp").innerHTML = this.responseText;
+                        
+                        //alert(this.responseText);
+                    }
+                    
+                };
+                xhttp.open("GET", "update(price).php?new_value="+val+"&id="+id,true);
+                xhttp.send();
+		
+	
+	}
+	
+	
+	
+	</script>
+
+</html>
